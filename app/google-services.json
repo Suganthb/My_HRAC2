@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "821672580146",
+    "firebase_url": "https://hrac-f6cc5.firebaseio.com",
+    "project_id": "hrac-f6cc5",
+    "storage_bucket": "hrac-f6cc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821672580146:android:31e6e37c266aa63357982b",
+        "android_client_info": {
+          "package_name": "com.example.my_hrac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821672580146-0culf5abg5h9oeolbgjaobf6c5is1gig.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_hrac",
+            "certificate_hash": "a9e9f56654ceda337e7cc7c2523f258fdbedb872"
+          }
+        },
+        {
+          "client_id": "821672580146-v5l4fnaqcgdqqfc6h9v67936s4n9166m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyMMVxVKgNT9cIPmf9eUZvlqTpzL0cY0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "821672580146-v5l4fnaqcgdqqfc6h9v67936s4n9166m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
