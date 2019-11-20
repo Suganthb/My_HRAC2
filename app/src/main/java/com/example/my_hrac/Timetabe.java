@@ -11,6 +11,19 @@ public class Timetabe {
     private String lectureHall;
     private List<CustomDate> Dates;
 
+   /*private Timetabe(String lecture,String subjectCode,String academicYear,String startingtime,String lectureHall,List<CustomDate> dates){
+        this.lecture=lecture;
+        this.subjectCode=subjectCode;
+        this.academicYear=academicYear;
+        this.startingtime=startingtime;
+        this.lectureHall=lectureHall;
+        //this.Dates=dates;
+    }
+
+    private Timetabe(){
+
+    }*/
+
     public String getLecture() {
         return lecture;
     }

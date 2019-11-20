@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -32,7 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     private EditText editTextTitle;
+
+
     private InRfid id;
+    //private Attendance at;
+    //private AddCheck ad;
+    //private Timetabe tt;
 
     long currentDate =0;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -74,16 +80,17 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-        StuIndex.add(id.getIndexNumber());
+        //StuIndex.add(id.getIndexNumber());
 
 
 
-        db.collection("RFID_NO").add(note);
+        //db.collection("RFID_NO").add(note);
 
 
         //search tiemtable db to lecture hall
         db.collection("Timetable")
                 //.whereEqualTo("lectureHall", zzzzz)
+
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
 
@@ -91,9 +98,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         String data = "";
+                        Integer flag=0;
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             try {
-                                Timetabe tt = documentSnapshot.toObject(Timetabe.class);
+                               Timetabe tt = documentSnapshot.toObject(Timetabe.class);
                                 for (CustomDate date : tt.getDates()) {
                                     int d, m, y;
                                     d = Utilities.getDay(currentDate);
@@ -110,23 +118,59 @@ public class MainActivity extends AppCompatActivity {
                                             Attendance at = new Attendance();
                                             at.setDate(Utilities.getDate(currentDate));
                                             at.setAttended(true);
+                                            at.setDone(true);
                                             at.setIndexNumber(id != null ? id.getIndexNumber() : "");
-//                                            at.setIndexNumber(editTextTitle.getText().toString());
+//                                           at.setIndexNumber(editTextTitle.getText().toString());
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                          /* db.collection(tt.getSubjectCode())
+                                                    .whereEqualTo("IndexNumber",at.getIndexNumber())
+                                                    .whereEqualTo("date",at.getDate())
+                                                    .get()
+                                                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                                            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                                                                ad = documentSnapshot.toObject(AddCheck.class);
+                                                                ad.setDocumentId(documentSnapshot.getId());
+
+                                                                if(ad.isAttended() != at.isAttended()){
+                                                                    Toast.makeText(MainActivity.this, "Mark Attendance", Toast.LENGTH_SHORT).show();
+
+                                                                    db.collection(tt.getSubjectCode())
+                                                                            .document(ad.getDocumentId())
+                                                                            .update("isAttended",at.isAttended());
+
+                                                                }
+                                                                else{
+                                                                    Toast.makeText(MainActivity.this, "you already made attendance", Toast.LENGTH_SHORT).show();
+                                                                }
 
 
+                                                            }
+                                                        }
+                                                    });*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                        flag=1;
                                         db.collection(tt.getSubjectCode()).add(at);
+                                        break;
 
                                         }
                                         else{
-                                            Toast.makeText(MainActivity.this, "U dont have a lectures in this time", Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(MainActivity.this, "U dont have a lectures in this time", Toast.LENGTH_SHORT).show();
+                                            continue;
                                         }
-                                        data += "SubCode:" + SubCode + "LecName:" + LecName +"starting time" + St_Time +"Ending time" + Ed_Time + "\n\n";
+                                        //data += "SubCode:" + SubCode + "LecName:" + LecName +"starting time" + St_Time +"Ending time" + Ed_Time + "\n\n";
 
                                     }
                                     else{
-                                        Toast.makeText(MainActivity.this, "U dont have a lectures in this date", Toast.LENGTH_SHORT).show();
+                                        continue;
+                                        //Toast.makeText(MainActivity.this, "U dont have a lectures in this date", Toast.LENGTH_SHORT).show();
                                     }
 
+                                }
+                                if(flag==1){
+                                    Toast.makeText(MainActivity.this, "U dont have a permission", Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
 

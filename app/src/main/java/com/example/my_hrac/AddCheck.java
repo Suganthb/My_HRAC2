@@ -1,20 +1,28 @@
 package com.example.my_hrac;
 
-public class Attendance {
+public class AddCheck {
     private String IndexNumber;
     private String date;
     private  boolean isAttended;
-    private boolean done;
+    private String documentId;
 
-    /*private Attendance(String indexNumber,String date,boolean isAttended){
+
+    private AddCheck(String indexNumber,String date,boolean isAttended,String documentId){
         this.IndexNumber=indexNumber;
         this.date=date;
         this.isAttended=isAttended;
+        this.documentId=documentId;
+
     }
 
-    private Attendance(){
+    public String getDocumentId() {
+        return documentId;
+    }
 
-    }*/
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+/////////
 
     public String getIndexNumber() {
         return IndexNumber;
@@ -39,13 +47,4 @@ public class Attendance {
     public void setAttended(boolean attended) {
         isAttended = attended;
     }
-
-    public boolean done() {
-        return done;
-    }
-
-    public void setDone(boolean dones) {
-        done = dones;
-    }
-
 }

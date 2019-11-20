@@ -109,7 +109,7 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
 
         //search tiemtable db to lecture hall
         db.collection("Timetable")
-                .whereEqualTo("lectureHall", item)
+                .whereEqualTo("lectureHall",item)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
