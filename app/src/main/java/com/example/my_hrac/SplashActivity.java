@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.widget.ImageView;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import javax.annotation.Nullable;
@@ -14,6 +16,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private ImageView logo;
     private static int splashTimeOut=5000;
+    private TextView iname;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstaceState){
@@ -21,6 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         logo=(ImageView)findViewById(R.id.logo);
+        iname=(TextView)findViewById(R.id.ivew) ;
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -33,6 +37,8 @@ public class SplashActivity extends AppCompatActivity {
 
         Animation myanim = AnimationUtils.loadAnimation(this,R.anim.mysplashanimation);
         logo.startAnimation(myanim);
+        iname.startAnimation(myanim);
 
     }
 }
+

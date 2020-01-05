@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/ivew"
         android:layout_width="115dp"
         android:layout_height="53dp"
         android:text="HRAC"
