@@ -37,7 +37,7 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
     private TextView textViewData, etDate, etTime;
     private Button ScanNow;
 
-    //private ClassP item;
+
 
 
     @Override

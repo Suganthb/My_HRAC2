@@ -11,18 +11,18 @@ public class Timetabe {
     private String lectureHall;
     private List<CustomDate> Dates;
 
-   /*private Timetabe(String lecture,String subjectCode,String academicYear,String startingtime,String lectureHall,List<CustomDate> dates){
+   private Timetabe(String lecture,String subjectCode,String academicYear,String startingtime,String lectureHall,List<CustomDate> dates){
         this.lecture=lecture;
         this.subjectCode=subjectCode;
         this.academicYear=academicYear;
         this.startingtime=startingtime;
         this.lectureHall=lectureHall;
-        //this.Dates=dates;
+        this.Dates=dates;
     }
 
     private Timetabe(){
 
-    }*/
+    }
 
     public String getLecture() {
         return lecture;
@@ -37,8 +37,7 @@ public class Timetabe {
     }
 
     public void setSubjectCode(String subjectCode) {
-        this.subjectCode = subjectCode;
-    }
+        this.subjectCode = subjectCode;    }
 
     public String getAcademicYear() {
         return academicYear;

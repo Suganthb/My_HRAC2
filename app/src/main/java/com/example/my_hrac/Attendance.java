@@ -4,9 +4,9 @@ public class Attendance {
     private String IndexNumber;
     private String date;
     private  boolean isAttended;
-    private boolean done;
+    //private boolean done;
 
-    /*private Attendance(String indexNumber,String date,boolean isAttended){
+    private Attendance(String indexNumber,String date,boolean isAttended){
         this.IndexNumber=indexNumber;
         this.date=date;
         this.isAttended=isAttended;
@@ -14,7 +14,7 @@ public class Attendance {
 
     private Attendance(){
 
-    }*/
+    }
 
     public String getIndexNumber() {
         return IndexNumber;
@@ -40,12 +40,12 @@ public class Attendance {
         isAttended = attended;
     }
 
-    public boolean done() {
+    /*public boolean done() {
         return done;
     }
 
     public void setDone(boolean dones) {
         done = dones;
-    }
+    }*/
 
 }
