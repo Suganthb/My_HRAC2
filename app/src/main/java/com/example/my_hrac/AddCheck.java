@@ -15,14 +15,11 @@ public class AddCheck {
 
     }
 
-    public String getDocumentId() {
-        return documentId;
-    }
+    public String getDocumentId() { return documentId; }
 
     public void setDocumentId(String documentId) {
         this.documentId = documentId;
     }
-/////////
 
     public String getIndexNumber() {
         return IndexNumber;

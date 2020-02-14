@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundjpg">
 
    <Spinner
        android:id="@+id/android_material_design_spinner"
@@ -61,6 +62,8 @@
        android:layout_marginTop="60dp"
        android:layout_marginBottom="88dp"
        android:text="Scan Now"
+       android:background="@drawable/custom_button"
+       android:textColor="#ff7400"
        app:layout_constraintBottom_toTopOf="@+id/android_material_design_spinner"
        app:layout_constraintEnd_toStartOf="@+id/etDate"
        app:layout_constraintHorizontal_bias="0.12"

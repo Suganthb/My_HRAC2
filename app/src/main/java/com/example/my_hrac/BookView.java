@@ -2,6 +2,7 @@ package com.example.my_hrac;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,6 +50,7 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
         betterSpinner = findViewById(R.id.android_material_design_spinner);
 
         textViewData = findViewById(R.id.text_view_data);
+        textViewData.setMovementMethod(new ScrollingMovementMethod());
         etDate = findViewById(R.id.etDate);
         etTime = findViewById(R.id.etTime);
         ScanNow = findViewById(R.id.btnScan);
