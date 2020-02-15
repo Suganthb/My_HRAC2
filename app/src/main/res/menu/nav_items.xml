@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_B1"
+        android:icon="@drawable/baseline_home_black_24dp"
+        android:title="@string/nav_home" />
+    <item
+        android:id="@+id/nav_B2"
+        android:icon="@drawable/baseline_date_range_black_24dp"
+        android:title="@string/nav_bookv" />
+    <item
+        android:id="@+id/nav_B3"
+        android:icon="@drawable/baseline_scanner_black_24dp"
+        android:title="@string/nav_scan" />
+    <item
+        android:id="@+id/nav_B4"
+        android:icon="@drawable/baseline_event_black_24dp"
+        android:title="@string/nav_booking" />
+    <item
+        android:id="@+id/nav_B5"
+        android:icon="@drawable/baseline_school_black_24dp"
+        android:title="@string/nav_add" />
+</menu>

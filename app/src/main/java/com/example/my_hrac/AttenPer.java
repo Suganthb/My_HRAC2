@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Home extends AppCompatActivity {
+public class AttenPer extends AppCompatActivity {
 
 
     private BottomNavigationView mMainNav;
@@ -17,10 +17,10 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_atten_per);
 
         mMainNav = (BottomNavigationView)findViewById(R.id.main_nav);
-        mMainNav.setSelectedItemId(R.id.nav_B1);
+        mMainNav.setSelectedItemId(R.id.nav_B5);
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

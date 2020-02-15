@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -38,6 +40,8 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
     private TextView textViewData, etDate, etTime;
     private Button ScanNow;
 
+    private BottomNavigationView mMainNav;
+
 
 
 
@@ -46,6 +50,45 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bookingview);
         currentDate = new Date().getTime();
+
+        mMainNav = (BottomNavigationView)findViewById(R.id.main_nav);
+        mMainNav.setSelectedItemId(R.id.nav_B2);
+
+        mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+
+                    case R.id.nav_B1:
+                        startActivity(new Intent(getApplicationContext(),Home.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_B2:
+                        startActivity(new Intent(getApplicationContext(),BookView.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_B3:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_B4:
+                        startActivity(new Intent(getApplicationContext(),AllBookingView.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_B5:
+                        startActivity(new Intent(getApplicationContext(),AttenPer.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
 
         betterSpinner = findViewById(R.id.android_material_design_spinner);
 

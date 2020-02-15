@@ -1,9 +1,11 @@
 package com.example.my_hrac;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -42,12 +45,50 @@ public class MainActivity extends AppCompatActivity  {
 
     long currentDate =0;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private BottomNavigationView mMainNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         currentDate =new Date().getTime();
+
+        mMainNav = (BottomNavigationView)findViewById(R.id.main_nav);
+        mMainNav.setSelectedItemId(R.id.nav_B3);
+
+        mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+
+                    case R.id.nav_B1:
+                        startActivity(new Intent(getApplicationContext(),Home.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_B2:
+                        startActivity(new Intent(getApplicationContext(),BookView.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_B3:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_B4:
+                        startActivity(new Intent(getApplicationContext(),AllBookingView.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.nav_B5:
+                        startActivity(new Intent(getApplicationContext(),AttenPer.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
         editTextTitle = findViewById(R.id.name);
         editTextTitle.setVisibility(View.GONE);
         Toast.makeText(MainActivity.this, "scan now ", Toast.LENGTH_SHORT).show();
