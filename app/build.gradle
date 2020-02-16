@@ -39,6 +39,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'androidx.mediarouter:mediarouter:1.1.0'
+    implementation 'com.basgeekball:awesome-validation:1.3'
 
 
 }

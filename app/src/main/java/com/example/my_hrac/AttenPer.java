@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -13,6 +16,9 @@ public class AttenPer extends AppCompatActivity {
 
 
     private BottomNavigationView mMainNav;
+
+    private EditText CourseNo,IndexNo;
+    private Button Find;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +61,31 @@ public class AttenPer extends AppCompatActivity {
                 return false;
             }
         });
+
+        CourseNo = (EditText)findViewById(R.id.cNo);
+        IndexNo = (EditText)findViewById(R.id.iNo);
+        Find = (Button)findViewById(R.id.btnFind);
+
+        Find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (validateC_I(CourseNo,IndexNo)==true){
+
+                }
+
+            }
+        });
+
+
+    }
+
+    private boolean validateC_I(EditText courseNo,EditText indexNo){
+        String cNOInput =courseNo.getText().toString();
+        String iNOInput =indexNo.getText().toString();
+
+//        if ()
+
+        return false;
+
     }
 }

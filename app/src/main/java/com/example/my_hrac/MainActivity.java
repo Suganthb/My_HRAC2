@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
         editTextTitle = findViewById(R.id.name);
-        editTextTitle.setVisibility(View.GONE);
+        //editTextTitle.setVisibility(View.GONE);
         Toast.makeText(MainActivity.this, "scan now ", Toast.LENGTH_SHORT).show();
 
         editTextTitle.addTextChangedListener(new TextWatcher() {
@@ -113,8 +113,7 @@ public class MainActivity extends AppCompatActivity  {
 
                     String title = editTextTitle.getText().toString();
 
-
-
+                    Log.d("scanner number", title.toString());
 
 
 

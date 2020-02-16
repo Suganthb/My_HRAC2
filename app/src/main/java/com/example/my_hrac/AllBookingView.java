@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,6 +85,7 @@ public class AllBookingView extends AppCompatActivity {
         mDisplayDate =(TextView) findViewById(R.id.tvDate);
 
         ABookView =(TextView)  findViewById(R.id.BookView);
+        ABookView.setMovementMethod(new ScrollingMovementMethod());
 
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +129,7 @@ public class AllBookingView extends AppCompatActivity {
     private void checkDatabase(){
 
         db.collection("confirmed_bookings")
-                .whereEqualTo("selectDate",mDisplayDate.getText().toString())
+                .whereEqualTo("date",mDisplayDate.getText().toString())
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -138,12 +140,12 @@ public class AllBookingView extends AppCompatActivity {
                             try {
                                 cb = documentSnapshot.toObject(ConfirmedBooking.class);
 
-                                String Reason       = cb.getReason();
-                                Date RequestDate  = cb.getRequestedDate();
+                                String Date       = cb.getDate();
                                 String St_Time      = cb.getStartingtime();
                                 String Ed_Time      = cb.getEndingtime();
+                                String SubjectCode  = cb.getSubjectCode();
 
-                                Data += "Reason" + Reason + "\n" + "RequestDate" + RequestDate + "\n" + "starting time" + St_Time + "\n" + "Ending time" + Ed_Time + "\n\n";
+                                Data += "Requested Date" + Date + "\n" +  "starting time" + St_Time + "\n" + "Ending time" + Ed_Time +  "\n" + "SubjectCode" + SubjectCode +  "\n\n";
 
                                 //checking is empty or not
                                 if (Data.isEmpty()) {
