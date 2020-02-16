@@ -21,7 +21,8 @@
         android:textColor="@android:color/holo_orange_dark"
         android:textColorHighlight="@android:color/background_light"
         android:textSize="34sp"
-        android:textStyle="bold"></TextView>
+        android:textStyle="bold">
+    </TextView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_nav"
@@ -91,5 +92,14 @@
         android:layout_marginEnd="186dp"
         android:layout_marginBottom="334dp"
         android:text="Find" />
+
+    <TextView
+        android:id="@+id/atV"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:hint="View Attendance details"/>
 
 </RelativeLayout>

@@ -1,27 +1,18 @@
 package com.example.my_hrac;
 
 public class Attendance {
-    private String IndexNumber;
+    private String indexNumber;
     private String date;
-    private  boolean isAttended;
+    private  boolean attended;
     //private boolean done;
 
-    private Attendance(String indexNumber,String date,boolean isAttended){
-        this.IndexNumber=indexNumber;
-        this.date=date;
-        this.isAttended=isAttended;
-    }
-
-    private Attendance(){
-
-    }
 
     public String getIndexNumber() {
-        return IndexNumber;
+        return indexNumber;
     }
 
     public void setIndexNumber(String indexNumber) {
-        IndexNumber = indexNumber;
+        this.indexNumber = indexNumber;
     }
 
     public String getDate() {
@@ -33,11 +24,11 @@ public class Attendance {
     }
 
     public boolean isAttended() {
-        return isAttended;
+        return attended;
     }
 
     public void setAttended(boolean attended) {
-        isAttended = attended;
+        this.attended = attended;
     }
 
     /*public boolean done() {

@@ -1,19 +1,22 @@
 package com.example.my_hrac;
 
 public class AddCheck {
-    private String IndexNumber;
+    private String indexNumber;
     private String date;
-    private  boolean isAttended;
+    private  boolean attended;
     private String documentId;
 
 
-    private AddCheck(String indexNumber,String date,boolean isAttended,String documentId){
-        this.IndexNumber=indexNumber;
+    public AddCheck(String indexNumber,String date,boolean isAttended,String documentId){
+        this.indexNumber=indexNumber;
         this.date=date;
-        this.isAttended=isAttended;
+        this.attended=isAttended;
         this.documentId=documentId;
 
     }
+    public AddCheck(){}
+
+
 
     public String getDocumentId() { return documentId; }
 
@@ -22,11 +25,11 @@ public class AddCheck {
     }
 
     public String getIndexNumber() {
-        return IndexNumber;
+        return indexNumber;
     }
 
     public void setIndexNumber(String indexNumber) {
-        IndexNumber = indexNumber;
+        indexNumber = indexNumber;
     }
 
     public String getDate() {
@@ -38,10 +41,10 @@ public class AddCheck {
     }
 
     public boolean isAttended() {
-        return isAttended;
+        return attended;
     }
 
     public void setAttended(boolean attended) {
-        isAttended = attended;
+        attended = attended;
     }
 }
