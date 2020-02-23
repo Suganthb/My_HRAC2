@@ -4,10 +4,11 @@ import java.util.Date;
 
 public class ConfirmedBooking {
 
-    private String date;
     private String endingtime;
-    private String startingtime;
+    private String lectureHall;
     private String subjectCode;
+    private String date;
+    private String startingtime;
 
     public String getDate() {
         return date;
@@ -25,23 +26,20 @@ public class ConfirmedBooking {
         this.subjectCode = subjectCode;
     }
 
+    private ConfirmedBooking(String endingtime, String lecturehall, String subjectCode, String Date, String startingtime)
+    {
 
-
-
-    private ConfirmedBooking(String date,String endingtime,String startingtime,String subjectCode){
-
-        this.startingtime=startingtime;
         this.endingtime=endingtime;
-        this.startingtime=startingtime;
+        this.lectureHall =lecturehall;
         this.subjectCode=subjectCode;
 
+        this.date=Date;
+        this.startingtime=startingtime;
     }
-
 
     private ConfirmedBooking(){
 
     }
-
 
 
     public String getEndingtime() {
@@ -52,6 +50,17 @@ public class ConfirmedBooking {
         this.endingtime = endingtime;
     }
 
+    public String getLecturehall() {
+        return lectureHall;
+    }
+
+    public void setLecturehall(String lecturehall) {
+        this.lectureHall = lecturehall;
+    }
+
+
+
+
 
 
     public String getStartingtime() {
@@ -61,4 +70,5 @@ public class ConfirmedBooking {
     public void setStartingtime(String startingtime) {
         this.startingtime = startingtime;
     }
+
 }

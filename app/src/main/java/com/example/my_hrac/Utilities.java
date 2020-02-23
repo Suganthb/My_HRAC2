@@ -7,21 +7,21 @@ import java.util.Date;
 
 public class Utilities {
 
-    //check current date
+    //check current date sent in this fromat
     public static int getDay(long times){
         Date date =  new Date(times);
         SimpleDateFormat format = new SimpleDateFormat("dd");
         return Integer.parseInt(format.format(date));
     }
 
-    //check current month
+    //check current month send it in this format
     public static int getMonth(long times){
         Date date =  new Date(times);
         SimpleDateFormat format = new SimpleDateFormat("MM");
         return Integer.parseInt(format.format(date));
     }
 
-    //check current year
+    //check current year send it in form
     public static int getYear(long times){
         Date date =  new Date(times);
         SimpleDateFormat format = new SimpleDateFormat("yyyy");
@@ -42,7 +42,7 @@ public class Utilities {
         return format.format(date);
     }
 
-    //check time between in the array
+    //check time between the two time usind calendar
     public static boolean isTimeBetween(String d1, String d2,String d3){
         try {
             String string1 = d1;

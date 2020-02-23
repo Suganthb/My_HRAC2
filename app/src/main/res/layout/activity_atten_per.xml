@@ -21,7 +21,6 @@
         android:layout_marginEnd="76dp"
         android:layout_marginBottom="562dp"
         android:text="  Attendance"
-        android:textColor="@android:color/holo_orange_dark"
         android:textColorHighlight="@android:color/background_light"
         android:textSize="34sp"
         android:textStyle="bold"></TextView>
@@ -33,7 +32,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         app:itemBackground="@color/bottomcolor"
-        app:menu="@menu/nav_items">
+        app:menu="@menu/nav_items"
+        app:itemIconTint="@color/nav_item_colors"
+        app:itemTextColor="@color/nav_item_colors">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
@@ -95,7 +96,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="186dp"
         android:layout_marginBottom="334dp"
-        android:text="Find" />
+        android:text="Find"
+        android:textColor="#ffffff"
+        android:background="@drawable/custom_button"/>
 
     <TextView
         android:id="@+id/atV"
@@ -104,6 +107,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="100dp"
-        android:hint="View Attendance details"/>
+        android:hint="View Attendance details"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+
+
 
 </RelativeLayout>

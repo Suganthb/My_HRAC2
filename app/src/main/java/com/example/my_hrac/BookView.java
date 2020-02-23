@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -30,17 +31,19 @@ import java.util.Date;
 
 public class BookView extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    //firebase connection
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     long currentDate = 0;
+    private BottomNavigationView BtmNav;
     private Spinner betterSpinner;
-
-    ArrayAdapter<String> arrayAdapter;
 
     private TextView textViewData, etDate, etTime;
     private Button ScanNow;
 
-    private BottomNavigationView mMainNav;
+    //class assign
+    Timetabe tt;
+    Hall h;
 
 
 
@@ -49,12 +52,15 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bookingview);
+
+        //get current date and time
         currentDate = new Date().getTime();
 
-        mMainNav = (BottomNavigationView)findViewById(R.id.main_nav);
-        mMainNav.setSelectedItemId(R.id.nav_B2);
+        //Bottom navigator view
+        BtmNav = (BottomNavigationView)findViewById(R.id.btm_nav);
+        BtmNav.setSelectedItemId(R.id.nav_B2);
 
-        mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        BtmNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
@@ -89,13 +95,18 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
         });
 
 
-
+        //spinner
         betterSpinner = findViewById(R.id.android_material_design_spinner);
 
+        //text view data
         textViewData = findViewById(R.id.text_view_data);
         textViewData.setMovementMethod(new ScrollingMovementMethod());
+
+        //edit text
         etDate = findViewById(R.id.etDate);
         etTime = findViewById(R.id.etTime);
+
+        //button open activity scan(Main activity)
         ScanNow = findViewById(R.id.btnScan);
         ScanNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +142,7 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Hall h = document.toObject(Hall.class);
+                                h = document.toObject(Hall.class);
                                 hals.add(h);
                                 Log.d("HALL_NUMBER", h.toString());
                                 halNames.add(h.getHallNumber());
@@ -139,7 +150,6 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(BookView.this,
                                     android.R.layout.simple_list_item_1, halNames);
                             betterSpinner.setAdapter(arrayAdapter);
-                            //   betterSpinner.setSelection(halNames.size()-1);
                         }
                     }
                 });
@@ -160,9 +170,9 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         String data = "";
-                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
                             try {
-                                Timetabe tt = documentSnapshot.toObject(Timetabe.class);
+                                 tt = documentSnapshot.toObject(Timetabe.class);
                                 for (CustomDate date : tt.getDates()) {
                                     int d, m, y;
                                     d = Utilities.getDay(currentDate);
@@ -170,7 +180,7 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
                                     y = Utilities.getYear(currentDate);
                                     if (date.compareDate(d, m, y)) {
                                         String SubCode = tt.getSubjectCode();
-                                        String LecName = tt.getLecture();
+                                        String LecName = tt.getLecturer();
                                         String St_Time = tt.getStartingtime();
                                         String Ed_Time = tt.getEndingtime();
 
@@ -180,18 +190,19 @@ public class BookView extends AppCompatActivity implements AdapterView.OnItemSel
                                     }
                                 }
 
-                                //checking is empty or not
-                                if (data.isEmpty()) {
-                                    data += "NO bookings Available";
-                                } else {
-                                    textViewData.setText(data);
-                                }
-
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
 
+                        }
+                        //checking is empty or not
+                        if (data.isEmpty()) {
+                            data += "NO bookings Available";
+                            textViewData.setText(data);
+                        } else {
+                            textViewData.setText(data);
+                            data = "NO bookings Available";
                         }
 
                     }

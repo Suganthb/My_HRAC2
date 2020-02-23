@@ -55,7 +55,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         app:itemBackground="@color/bottomcolor"
-        app:menu="@menu/nav_items">
+        app:menu="@menu/nav_items"
+        app:itemIconTint="@color/nav_item_colors"
+        app:itemTextColor="@color/nav_item_colors">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

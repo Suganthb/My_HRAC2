@@ -6,5 +6,7 @@
     <color name="backgroundColour">#e1f3ed</color>
     <color name="textColour">#2bb596</color>
     <color name="textColourScan">#009ccc</color>
-    <color name="bottomcolor">#77bd98</color>
+    <color name="bottomcolor">#1d4769</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteTransparent">#80ffffff</color>
 </resources>

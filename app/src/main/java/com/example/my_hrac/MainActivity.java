@@ -24,17 +24,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
-import okhttp3.internal.Util;
+import java.util.Date;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
-    Integer flag = 0;
-    private EditText editTextTitle;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private BottomNavigationView btm_nav;
+    private EditText eT_name;
 
 
     private InRfid id;
@@ -42,9 +41,11 @@ public class MainActivity extends AppCompatActivity {
     private AddCheck ad;
     private Timetabe tt;
 
+    Integer flag = 0;
+
     long currentDate = 1;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private BottomNavigationView mMainNav;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         currentDate = new Date().getTime();
 
-        mMainNav = (BottomNavigationView) findViewById(R.id.main_nav);
-        mMainNav.setSelectedItemId(R.id.nav_B3);
+        btm_nav = (BottomNavigationView) findViewById(R.id.main_nav);
+        btm_nav.setSelectedItemId(R.id.nav_B3);
 
-        mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        btm_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -88,11 +89,11 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        editTextTitle = findViewById(R.id.name);
-        editTextTitle.setVisibility(View.GONE);
+        eT_name = findViewById(R.id.ed_name);
+        //eT_name.setVisibility(View.GONE);
         Toast.makeText(MainActivity.this, "scan now ", Toast.LENGTH_SHORT).show();
 
-        editTextTitle.addTextChangedListener(new TextWatcher() {
+        eT_name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 if (s.length() == 0) {
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().length() == 10) {
-                    String title = editTextTitle.getText().toString();
+                    String title = eT_name.getText().toString();
 
 
                     db.collection("studentIndex")
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkTimeTable() {
+
         db.collection("Timetable")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                                     y = Utilities.getYear(currentDate);
                                     if (date.compareDate(d, m, y)) {
                                         String SubCode = tt.getSubjectCode();
-                                        String LecName = tt.getLecture();
+                                        String LecName = tt.getLecturer();
                                         String St_Time = tt.getStartingtime();
                                         String Ed_Time = tt.getEndingtime();
                                         if (Utilities.isTimeBetween(St_Time, Ed_Time, Utilities.getTime(currentDate))) {
@@ -182,9 +184,9 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                         //same date different time
-                        if (flag != 0) {
+                        /*if (flag != 0) {
                             Toast.makeText(MainActivity.this, "U dont have a permission", Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
                         finish();
                     }
 
@@ -208,11 +210,10 @@ public class MainActivity extends AppCompatActivity {
                             ad = documentSnapshot.toObject(AddCheck.class);
                             ad.setDocumentId(documentSnapshot.getId());
 
-                            flag = 0;
                             if (!ad.isAttended()) {
                                 Toast.makeText(MainActivity.this, "Mark Attendance", Toast.LENGTH_SHORT).show();
-
                                 updateAttendance();
+
                                 break;
                             } else {
                                 Toast.makeText(MainActivity.this, "You already made attendance", Toast.LENGTH_SHORT).show();

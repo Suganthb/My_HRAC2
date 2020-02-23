@@ -143,13 +143,15 @@ public class AllBookingView extends AppCompatActivity {
                                 String Date       = cb.getDate();
                                 String St_Time      = cb.getStartingtime();
                                 String Ed_Time      = cb.getEndingtime();
-                                String SubjectCode  = cb.getSubjectCode();
+                                String Reason  = cb.getSubjectCode();
+                                String LecHall =cb.getLecturehall();
 
-                                Data += "Requested Date" + Date + "\n" +  "starting time" + St_Time + "\n" + "Ending time" + Ed_Time +  "\n" + "SubjectCode" + SubjectCode +  "\n\n";
+                                Data += "Date" + Date + "\n" +  "starting time" + St_Time + "\n" + "Ending time" + Ed_Time +  "\n" + "Subject code :" + Reason + "Lecture Hall" + LecHall +"\n\n";
 
                                 //checking is empty or not
                                 if (Data.isEmpty()) {
                                     Data += "NO bookings Available";
+                                    ABookView.setText(Data);
                                 } else {
                                     ABookView.setText(Data);
                                 }

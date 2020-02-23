@@ -15,7 +15,6 @@
         android:layout_marginBottom="602dp"
         android:text="Booking view"
         android:textStyle="bold"
-        android:textColor="@color/bottomcolor"
         android:textAlignment="center"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,6 +32,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="495dp"
         android:hint="Select date"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.004"
@@ -47,8 +48,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="159dp"
         android:hint="Booking details are here"
-        android:textColor="#77bd98"
-        android:textColorHint="#77bd98"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +66,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         app:itemBackground="@color/bottomcolor"
-        app:menu="@menu/nav_items">
+        app:menu="@menu/nav_items"
+        app:itemIconTint="@color/nav_item_colors"
+        app:itemTextColor="@color/nav_item_colors">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

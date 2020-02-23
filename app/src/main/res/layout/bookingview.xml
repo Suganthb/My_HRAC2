@@ -15,7 +15,7 @@
        android:layout_marginStart="-3dp"
        android:layout_marginTop="196dp"
        android:hint="Select Hall No"
-       android:textColorHint="#ff7400"
+       android:textColorHint="#ffffff"
        app:layout_constraintTop_toTopOf="parent"
        tools:layout_editor_absoluteX="16dp" />
 
@@ -30,7 +30,7 @@
        android:layout_marginBottom="572dp"
        android:ems="10"
        android:inputType="date"
-       android:textColor="#ff7400"
+       android:textColor="#ffffff"
        android:textStyle="bold"
        app:layout_constraintBottom_toTopOf="@+id/etTime"
        app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
        android:layout_marginBottom="520dp"
        android:ems="10"
        android:inputType="time"
-       android:textColor="#ff7400"
+       android:textColor="#ffffff"
        android:textStyle="bold"
        app:layout_constraintBottom_toTopOf="@+id/android_material_design_spinner"
        app:layout_constraintEnd_toEndOf="parent"
@@ -64,8 +64,8 @@
        android:layout_alignParentBottom="true"
        android:layout_marginBottom="162dp"
        android:hint="Lecture details are here"
-       android:textColor="#77bd98"
-       android:textColorHint="#77bd98"
+       android:textColor="#ffffff"
+       android:textColorHint="#ffffff"
        android:textSize="20dp"
        android:textStyle="bold"
        app:layout_constraintBottom_toBottomOf="parent"
@@ -84,7 +84,7 @@
        android:layout_marginEnd="278dp"
        android:background="@drawable/custom_button"
        android:text="Scan Now"
-       android:textColor="#ff7400"
+       android:textColor="#ffffff"
        app:layout_constraintBottom_toTopOf="@+id/android_material_design_spinner"
        app:layout_constraintEnd_toStartOf="@+id/etDate"
        app:layout_constraintHorizontal_bias="0.12"
@@ -93,13 +93,15 @@
        app:layout_constraintVertical_bias="0.0" />
 
    <com.google.android.material.bottomnavigation.BottomNavigationView
-       android:id="@+id/main_nav"
+       android:id="@+id/btm_nav"
        android:layout_width="match_parent"
        android:layout_height="56dp"
        android:layout_alignParentBottom="true"
        android:layout_marginBottom="0dp"
        app:itemBackground="@color/bottomcolor"
-       app:menu="@menu/nav_items">
+       app:menu="@menu/nav_items"
+       app:itemIconTint="@color/nav_item_colors"
+       app:itemTextColor="@color/nav_item_colors">
 
    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
